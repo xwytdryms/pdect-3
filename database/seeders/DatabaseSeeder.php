@@ -17,15 +17,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        $this->call(DeviceSeeder::class);
         User::factory()->create(
             [
             'name' => 'Admin',
             'email' => 'cpakustik@gmail.com',
             'password' => 'xddfakertssk',
         ]);
-        Uplink::Factory(100)->recycle([
-            Device::all()
-        ])->create();
+        $device1 = Device::factory()->create();
+        Uplink::Factory(5)->create(['device_id'=> $device1->device_id]);
+
+        $device2 = Device::factory()->create();
+        Uplink::Factory(5)->create(['device_id'=> $device2->device_id]);
     }
 }

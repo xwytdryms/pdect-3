@@ -22,7 +22,6 @@
             
             {{-- Arc Graph --}}
             @include('pages.monitoringpd.arc-graph')
-            
          </div>
     </div>
     @push('scripts')

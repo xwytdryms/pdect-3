@@ -6,7 +6,6 @@ use App\Models\Device;
 use App\Models\Uplink;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Uplink>
  */
@@ -20,17 +19,17 @@ class UplinkFactory extends Factory
     public function definition()
     {
         return [
-            'port' => fake()->randomDigit(),
-            'date' => fake()->date(),
-            'device_id'=> Device::Factory(),
+            'port' => $this->faker->randomDigit(),
+            'date' => $this->faker->date(),
+            'device_id' => $this->faker->randomDigit(),
             'payloads' => collect([
-                'dBMin' => fake()->randomFloat(2, 0, 100),
-                'dBMax' => fake()->randomFloat(2, 0, 100),
-                'dBA' => fake()->randomFloat(2, 0, 100),
-                'Arc'    => fake()->randomFloat(2, 0, 100),
-                'battery' => fake()->randomFloat(2, 0, 100),
-                'status' => fake()->randomElements(['Normal','Waspada','Kritis'])
-            ]),
+                'dBMin' => $this->faker->randomFloat(2, 0, 100),
+                'dBMax' => $this->faker->randomFloat(2, 0, 100),
+                'dBA' => $this->faker->randomFloat(2, 0, 100),
+                'Arc' => $this->faker->randomFloat(2, 0, 100),
+                'battery' => $this->faker->randomFloat(2, 0, 100),
+                'status' => $this->faker->randomElement(['Normal', 'Waspada', 'Kritis']),
+            ])->toJson(),
         ];
     }
 }
