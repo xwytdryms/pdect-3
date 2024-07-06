@@ -1,0 +1,25 @@
+@import "https://unpkg.com/leaflet/dist/leaflet.css";
+
+.dropdown {
+    height: 50px;
+    width: 60px;
+    position: relative;
+    z-index: 2;
+}
+#map {
+    height: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Gaya sederhana untuk elemen popup peta */
+.leaflet-popup-content-wrapper {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.leaflet-popup-tip-container {
+    display: none;
+}
