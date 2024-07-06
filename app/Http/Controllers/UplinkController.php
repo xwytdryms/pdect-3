@@ -53,7 +53,7 @@ class UplinkController extends Controller
     {
         $data = [
             'device_id' => $mapper->getDeviceId(),
-            'date' => $mapper->getTime()->toDateString(),
+            'date' => $mapper->getTime()->toDateTimeString(),
             'port' => $mapper->getPort(),
         ];
 
@@ -63,6 +63,10 @@ class UplinkController extends Controller
             'payloads' => [],
         ]);
         $uplink->payloads = $payload;
+        // $uplink->dB_Max = $payload['dBMin'] ?? 0;
+        // $uplink->dB_Max = $payload['dBA'] ?? 0;
+        // $uplink->dB_Max = $payload['dBMax'] ?? 0;
+        // $uplink->dB_Max = $payload['Arc'] ?? 0;
         $uplink->save();
 
         // device
@@ -82,8 +86,11 @@ class UplinkController extends Controller
 
         // save payload to device
         $device->latest_payload = $payload;
+        $device->status = $device->latest_payload['status'];
         $device->latest_payload_at = $uplink->created_at;
         $device->save();
+
+
 
         // // Status change from port
         // if ($data['port'] == 3) {

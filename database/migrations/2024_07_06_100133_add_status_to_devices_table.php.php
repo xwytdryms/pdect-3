@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('uplinks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('port')->nullable();
-            $table->date('date')->nullable();
-            $table->json('payloads')->nullable();
-            $table->timestamps();
+        Schema::table('devices', function (Blueprint $table) {
+            $table->string('status')->nullable();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('uplinks');
+        Schema::table('devices', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

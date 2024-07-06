@@ -65,24 +65,15 @@ class ChirpstackUplinkMapper implements UplinkMapperInterface
     }
 
 
-    public function getdBMax(){
-        return $this->uplink['dBMax'];
-    }
-
-    public function getdBMin(){
-        return $this->uplink['dBMin'];
-    }
-
-    public function getdBA(){
-        return $this->uplink['dBA'];
-    }
-    public function getArc(){
-        return $this->uplink['Arc'];
-    }
-
     public function getPayload()
     {
         $payload = json_decode($this->uplink['objectJSON'], true);
+        $payload['frequency'] = $this->getFrequency();
+        // $payload['time'] = $this->getTime()->toTimeString();
+        $payload['datetime'] = $this->getTime()->toAtomString();
+        $payload['rssi'] = $this->getRssi();
+        $payload['snr'] = $this->getSnr();
+        $payload['counter'] = $this->getCounter();
 
         return $payload;
     }

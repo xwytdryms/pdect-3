@@ -21,12 +21,6 @@ interface UplinkMapperInterface
 
     public function getEui();
 
-    public function getdBA();
-    
-    public function getdBMax();
 
-    public function getdBMin();
-
-    public function getArc();
 
 }

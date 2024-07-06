@@ -9,14 +9,12 @@ class DashboardController extends Controller
 {
     //
     public function index(){
-        $device = Device::get();
-
-        $status = json_decode($device->uplink->last()->payloads);
+        $devices = Device::get();
 
         // dd($status->toArray());
         // dd($status->toArray());
 
-        return view('pages.dashboard.index', ['device' => $device, 'status' => $status]);	 
+        return view('pages.dashboard.index', ['devices' => $devices]);	 
     }
 
 
