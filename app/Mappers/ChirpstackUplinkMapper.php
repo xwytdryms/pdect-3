@@ -64,9 +64,6 @@ class ChirpstackUplinkMapper implements UplinkMapperInterface
         return $this->uplink['txInfo']['frequency'] / 1000000;
     }
 
-    public function getStatus(){
-        return $this->uplink['status'];
-    }
 
     public function getdBMax(){
         return $this->uplink['dBMax'];
@@ -86,17 +83,6 @@ class ChirpstackUplinkMapper implements UplinkMapperInterface
     public function getPayload()
     {
         $payload = json_decode($this->uplink['objectJSON'], true);
-        $payload['frequency'] = $this->getFrequency();
-        // $payload['time'] = $this->getTime()->toTimeString();
-        $payload['datetime'] = $this->getTime()->toAtomString();
-        $payload['rssi'] = $this->getRssi();
-        $payload['snr'] = $this->getSnr();
-        $payload['counter'] = $this->getCounter();
-        $payload['status'] = $this->getStatus();
-        $payload['dBMax'] = $this->getdBMax();
-        $payload['dBMin'] = $this->getdBMin();
-        $payload['dBA'] = $this->getdBA();
-        $payload['Arc'] = $this->getArc();
 
         return $payload;
     }
