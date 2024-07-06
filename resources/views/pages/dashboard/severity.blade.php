@@ -28,7 +28,14 @@
                 <td class="px-6 py-4">
                     {{ $device->device_id }}
                 </td>
-                <td class="px-6 py-4 text-red dark:text-red-500">
+                <td class="px-6 py-4 
+                    @if ($device->status === 'Kritis') text-red-500
+                    @elseif ($device->status === 'Waspada') text-yellow-500
+                    @elseif ($device->status === 'Normal') text-green-500
+                    @else text-white
+                    @endif">
+                    {{ $device->status ?? 'N/A'}}
+                </td>
                     {{ $device->status ?? 'N/A' }}
                 </td>
             </tr>

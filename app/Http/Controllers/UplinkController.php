@@ -63,10 +63,10 @@ class UplinkController extends Controller
             'payloads' => [],
         ]);
         $uplink->payloads = $payload;
-        // $uplink->dB_Max = $payload['dBMin'] ?? 0;
-        // $uplink->dB_Max = $payload['dBA'] ?? 0;
-        // $uplink->dB_Max = $payload['dBMax'] ?? 0;
-        // $uplink->dB_Max = $payload['Arc'] ?? 0;
+        $uplink->dB_Max = $payload['dBMin'] ?? 0;
+        $uplink->dB_Max = $payload['dBA'] ?? 0;
+        $uplink->dB_Max = $payload['dBMax'] ?? 0;
+        $uplink->dB_Max = $payload['Arc'] ?? 0;
         $uplink->save();
 
         // device
