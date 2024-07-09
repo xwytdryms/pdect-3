@@ -1,6 +1,6 @@
 <div class="col-start-1 col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" id="widget" style="height: 10rem; width: 24rem;">
     <div class="flex items-center justify-between px-4">
-        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pt-2">Sleman-Kaliurang 01</h5>
+        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pt-2">{{ $device->name ?? 'Device Name' }}</h5>
         <div class="pt-2 text-center">      
           <a href="{{ route('devicemanager') }}" class="px-4 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 hover:rotate-90">
@@ -24,7 +24,7 @@
                         </p>
                     </div>
                     <div class="inline-flex text-base text-left ms-4 font-semibold text-gray-900 dark:text-white">
-                        sw_01
+                        {{ $device->device_id }}
                     </div>
                 </div>
             </li>
@@ -41,7 +41,7 @@
                         </p>
                     </div>
                     <div class="inline-flex text-base text-left ml-4 font-semibold text-gray-900 dark:text-white">
-                        151a1b5d870e3790
+                        {{ $device->device_eui }}
                     </div>
                 </div>
             </li>

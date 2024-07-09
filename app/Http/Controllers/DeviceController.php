@@ -77,7 +77,9 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        //
+        // $id = $device->device_id;
+        
+        // return view('pages.monitoringpd.info', ['id' => $id]);
     }
 
     /**

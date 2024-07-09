@@ -23,7 +23,7 @@
                     {{ $device->id }}
                 </th>
                 <th class="px-6 py-4">
-                    <a href="{{ route('monitoringpd') }}" class="hover:underline">{{ $device->name ?? $device->device_id }}</a>
+                    <a href="{{ route('dashboard.show', $device->device_id) }}" class="hover:underline">{{ $device->name ?? $device->device_id }}</a>
                 </th>
                 <td class="px-6 py-4">
                     {{ $device->device_id }}
@@ -35,8 +35,6 @@
                     @else text-white
                     @endif">
                     {{ $device->status ?? 'N/A'}}
-                </td>
-                    {{ $device->status ?? 'N/A' }}
                 </td>
             </tr>
             @endforeach

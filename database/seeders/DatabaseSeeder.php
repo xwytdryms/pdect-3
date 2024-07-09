@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'cpakustik@gmail.com',
             'password' => 'xddfakertssk',
         ]);
-        $device1 = Device::factory()->create();
-        Uplink::Factory(5)->create(['device_id'=> $device1->device_id]);
+        // $device1 = Device::factory()->create();
+        // Uplink::Factory(5)->create(['device_id'=> $device1->device_id]);
 
-        $device2 = Device::factory()->create();
-        Uplink::Factory(5)->create(['device_id'=> $device2->device_id]);
+        // $device2 = Device::factory()->create();
+        // Uplink::Factory(5)->create(['device_id'=> $device2->device_id]);
     }
 }

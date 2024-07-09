@@ -2,7 +2,7 @@
     <div class="p-4 bg-white  text-left rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 class="mb-2 text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Device Installed :</h5>
         <div class="flex justify-content-between ">
-            <h5 class="mb-3 ms-2 text-2xl font-semibold tracking-tight text-red-green dark:text-green-200">1 / 10</h5>
+            <h5 class="mb-3 ms-2 text-2xl font-semibold tracking-tight text-red-green dark:text-green-200">{{ $jumlah }}</h5>
             <h5 class="mb-3 ms-4 mt-0.5 text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Device</h5>
         </div>
         <a href="{{ route('devicemanager') }}" class="inline-flex font-medium items-center text-blue-600 hover:underline">

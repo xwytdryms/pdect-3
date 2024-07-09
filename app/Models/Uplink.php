@@ -13,6 +13,7 @@ class Uplink extends Model
     protected $casts = [
         'latest_payload' => 'array',
     ];
+    
 
     public function device()
     { 

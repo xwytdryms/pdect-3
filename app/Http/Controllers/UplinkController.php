@@ -15,27 +15,10 @@ class UplinkController extends Controller
     public function index()
     {
         // Fetch the latest uplink data
-        $uplink = Uplink::latest()->first();
+        $uplinks = uplink::latest();
 
-        // Extract payloads
-        if ($uplink) {
-            $payloads = $uplink->latestPayload();
-            $uplinkData = [
-                'id' => $uplink->id,
-                'port' => $uplink->port,
-                'device_id' => $uplink->device_id,
-                'dBMin' => $payloads['dBMin'] ?? 'N/A',
-                'dBA' => $payloads['dBA'] ?? 'N/A',
-                'dBMax' => $payloads['dBMax'] ?? 'N/A',
-                'Arc' => $payloads['Arc'] ?? 'N/A',
-                'status' => $payloads['status'][0] ?? 'N/A',
-            ];
-        } else {
-            $uplinkData = null;
-        }
 
-        // Pass the data to the view
-        return view('pages.monitoringpd.index', ['uplink' => $uplinkData]);
+        return view('pages.monitoringpd.index', ['uplinks' => $uplinks]);
     }
 
 
@@ -63,10 +46,10 @@ class UplinkController extends Controller
             'payloads' => [],
         ]);
         $uplink->payloads = $payload;
-        $uplink->dB_Max = $payload['dBMin'] ?? 0;
-        $uplink->dB_Max = $payload['dBA'] ?? 0;
-        $uplink->dB_Max = $payload['dBMax'] ?? 0;
-        $uplink->dB_Max = $payload['Arc'] ?? 0;
+        $uplink->dbmin = $payload['dbmin'] ?? 0;
+        $uplink->dba = $payload['dba'] ?? 0;
+        $uplink->dbmax = $payload['dbmax'] ?? 0;
+        $uplink->arc = $payload['arc'] ?? 0;
         $uplink->save();
 
         // device

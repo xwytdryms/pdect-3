@@ -15,7 +15,7 @@
             @include('pages.monitoringpd.graph')
             
             {{-- dB-Max Value --}}
-            @include('pages.monitoringpd.dbmax')
+            @include('pages.monitoringpd.severity-level')
             
             {{-- Arc Counter --}}
             @include('pages.monitoringpd.arc')
