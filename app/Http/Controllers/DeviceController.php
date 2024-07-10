@@ -27,7 +27,7 @@ class DeviceController extends Controller
             return [
                 'id'=> $device->id,
                 'device_id' => $device->device_id,
-                'device_name' => $device->name,
+                'name' => $device->name,
                 'device_eui' => $device->device_eui,
                 'description' => $device->description,
                 'address' => $device->address,
@@ -38,37 +38,34 @@ class DeviceController extends Controller
         });
         
 
-        return view('pages.devicemanager.index',['device'=>$deviceData]);
+        return view('pages.devicemanager.index',['devices'=>$deviceData]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDeviceRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|max:255',
             'device_id' => 'required|max:255',
-            'device_eui' => 'required|max:255',
-            'device_class' => 'nullable|max:255',   
-            'description' => 'nullable|max:255',
+            'device_eui' => 'required|max:255', 
             'address' => 'nullable|max:255',
             'latitude' => 'nullable',
             'longitude' => 'nullable',
         ]);
         
-
         Device::create($request->all());
 
-        return redirect()->route('devicemanager')
+        return redirect()->route('devicemanager.index', )
             ->with('success', 'Device created successfully.');
     }
 
@@ -77,51 +74,56 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        // $id = $device->device_id;
-        
-        // return view('pages.monitoringpd.info', ['id' => $id]);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit(Device $device)
     {
-        return view('components.edit-device-form');
+        // Ensure $device is an instance of the Device model
+        return redirect()->route('devicemanager.store', ['device' => $device->id]);
     }
+    
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Device $device, Request $request): RedirectResponse
-    {   
-        $request->validate([
-            'name'  => 'nullable|max:255',
+    {
+        // Debugging
+        dd($device);
+    
+        $validatedData = $request->validate([
+            'name' => 'nullable|max:255',
             'device_eui' => 'nullable|max:255',
-            'description' => 'nullable|max:255',
+            'device_id' => 'nullable|max:255',
             'address' => 'nullable|max:255',
-            'latitude' => 'nullable',
-            'longitude' => 'nullable',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
         ]);
-
-        // $oldStatus = $device->status;
-        $device = $request->device();
-        
-        $device->update($request->all());
-
-
-        return Redirect::route('devicemanager')
-        ->with('success', 'Device updated successfully');
+    
+        // Ensure $device is an instance of the Device model
+        $device->update($validatedData);
+    
+        return redirect()->route('devicemanager.index')
+            ->with('success', 'Device updated successfully');
     }
+    
+    
+    
 
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(Request $request): RedirectResponse
     {
         $device = $request->device();
 
         $device->delete();
-        return Redirect::route('devicemanager')->with('status', 'device-deleted');
+        return Redirect::route('devicemanager.index')->with('status', 'device-deleted');
     }
 }

@@ -22,6 +22,10 @@
                     </g>
                 </g>
             </svg>
+            @else 
+            <h4 class="text-3xl font-normal text-white">
+                {{ 'N/A' }}
+            </h4>
             @endif
 
         </div>
