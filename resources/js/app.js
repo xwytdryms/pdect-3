@@ -1,5 +1,5 @@
 import './bootstrap';
-import './external/devicemanager.js'
+// import './external/devicemanager.js'
 import './external/monitoringpd.js'
 import './external/dashboard.js'
 // Leaflet

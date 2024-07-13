@@ -14,31 +14,30 @@ use Termwind\Components\Dd;
 
 class DeviceController extends Controller
 {
-    
+
 
     public function index()
     {
         // Fetch latest devices data
-        $devices = Device::latest()->get();
+        $devices = Device::get();
 
         // Extract payloads
-        $deviceData = $devices->map(function($device){
+        $deviceData = $devices->map(function ($device) {
 
             return [
-                'id'=> $device->id,
+                'id' => $device->id,
                 'device_id' => $device->device_id,
                 'name' => $device->name,
                 'device_eui' => $device->device_eui,
                 'description' => $device->description,
                 'address' => $device->address,
                 'latitude' => $device->latitude,
-                'longitude' => $device->longitude 
+                'longitude' => $device->longitude
             ];
-
         });
-        
 
-        return view('pages.devicemanager.index',['devices'=>$deviceData]);
+        $editDeviceId = request()->query('edit');
+        return view('pages.devicemanager.index', ['devices' => $deviceData, 'editDeviceId' => $editDeviceId]);
     }
 
     /**
@@ -46,7 +45,7 @@ class DeviceController extends Controller
      */
     public function create(Request $request)
     {
-
+        
     }
 
     /**
@@ -57,15 +56,15 @@ class DeviceController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'device_id' => 'required|max:255',
-            'device_eui' => 'required|max:255', 
+            'device_eui' => 'required|max:255',
             'address' => 'nullable|max:255',
             'latitude' => 'nullable',
             'longitude' => 'nullable',
         ]);
-        
+
         Device::create($request->all());
 
-        return redirect()->route('devicemanager.index', )
+        return redirect()->route('devicemanager',)
             ->with('success', 'Device created successfully.');
     }
 
@@ -74,7 +73,6 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-
     }
 
     /**
@@ -83,19 +81,16 @@ class DeviceController extends Controller
     public function edit(Device $device)
     {
         // Ensure $device is an instance of the Device model
-        return redirect()->route('devicemanager.store', ['device' => $device->id]);
+        return redirect()->route('devicemanager', ['device' => $device->id]);
     }
-    
-    
+
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Device $device, Request $request): RedirectResponse
     {
-        // Debugging
-        dd($device);
-    
         $validatedData = $request->validate([
             'name' => 'nullable|max:255',
             'device_eui' => 'nullable|max:255',
@@ -104,26 +99,21 @@ class DeviceController extends Controller
             'latitude' => 'nullable|numeric',
             'longitude' => 'nullable|numeric',
         ]);
-    
+
         // Ensure $device is an instance of the Device model
         $device->update($validatedData);
-    
-        return redirect()->route('devicemanager.index')
+
+        return redirect()->route('devicemanager')
             ->with('success', 'Device updated successfully');
     }
-    
-    
-    
 
     /**
      * Remove the specified resource from storage.
      */
-
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Device $device): RedirectResponse
     {
-        $device = $request->device();
-
         $device->delete();
-        return Redirect::route('devicemanager.index')->with('status', 'device-deleted');
+        return Redirect::route('devicemanager')->with('status', 'device-deleted');
     }
+    
 }

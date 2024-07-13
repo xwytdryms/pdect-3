@@ -21,3 +21,5 @@ Route::get('/user', function (Request $request) {
 // uplink chirpstack route
 Route::post('uplink/chirpstack', [UplinkController::class, 'chirpstack'])->name('uplink.chirpstack');
 
+// uplink getData for tekegram bot
+Route::get('uplink/getData',[UplinkController::class, 'getData'])->name('uplink.getdata');
