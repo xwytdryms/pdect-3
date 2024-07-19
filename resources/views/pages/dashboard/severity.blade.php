@@ -6,7 +6,7 @@
                     #
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Device Name
+                    PLN Area
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Device Id
@@ -29,9 +29,9 @@
                     {{ $device->device_id }}
                 </td>
                 <td class="px-6 py-4 
-                    @if ($device->status === 'Kritis') text-red-500
-                    @elseif ($device->status === 'Waspada') text-yellow-500
-                    @elseif ($device->status === 'Normal') text-green-500
+                    @if ($device->status === 'High') text-red-500
+                    @elseif ($device->status === 'Medium') text-yellow-500
+                    @elseif ($device->status === 'Low') text-green-500
                     @else text-white
                     @endif">
                     {{ $device->status ?? 'N/A'}}

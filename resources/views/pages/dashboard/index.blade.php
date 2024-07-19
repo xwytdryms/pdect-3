@@ -1,6 +1,8 @@
 <x-app-layout>
     @push('css')
+    <link rel="stylesheet" href="{{ asset('css/leaflet-custom.css') }}">
     @endpush
+    
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -20,13 +22,16 @@
             {{-- 2nd wideget buat device  --}}
             @include('pages.dashboard.widget-2')
 
-            {{-- Buat Kondisi Normal, Waspada, & Bahaya --}}
+            {{-- Buat Kondisi Low, Medium, & High --}}
             @include('pages.dashboard.severity')
 
         </div>
     </div>
     @push('scripts')
-
+    <script>
+        // add devices to js
+        var devices = @json($devices);
+    </script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>

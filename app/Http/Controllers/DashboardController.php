@@ -11,11 +11,11 @@ class DashboardController extends Controller
     public function index(){
         $devices = Device::get();
 
-        $kritis = Device::where('status', 'Kritis')->count();
+        $high = Device::where('status', 'High')->count();
 
         $jumlah = Device::get()->count();
 
-        return view('pages.dashboard.index', ['devices' => $devices, 'kritis' => $kritis, 'jumlah' => $jumlah]);	 
+        return view('pages.dashboard.index', ['devices' => $devices, 'high' => $high, 'jumlah' => $jumlah]);	 
     }
 
     public function show($device_id){

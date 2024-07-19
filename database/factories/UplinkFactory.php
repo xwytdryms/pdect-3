@@ -28,7 +28,7 @@ class UplinkFactory extends Factory
                 'dBA' => $this->faker->randomFloat(2, 0, 100),
                 'Arc' => $this->faker->randomFloat(2, 0, 100),
                 'battery' => $this->faker->randomFloat(2, 0, 100),
-                'status' => $this->faker->randomElement(['Normal', 'Waspada', 'Kritis']),
+                'status' => $this->faker->randomElement(['Low', 'Medium', 'High']),
             ])->toJson(),
         ];
     }

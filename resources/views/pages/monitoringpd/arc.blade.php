@@ -4,7 +4,7 @@
         <div class="flex justify-center justify-item-center my-2 overflow-hidden text center">
             <h5 class="mt-1 text-3xl font-semibold tracking-tight 
             @if ($arc == 0) 
-                text-green-500
+                text-white
             @elseif ($arc > 0)
                 text-red-600
             @endif">

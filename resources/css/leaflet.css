@@ -23,3 +23,46 @@
 .leaflet-popup-tip-container {
     display: none;
 }
+
+/* Custom styles for colored markers */
+.marker-icon {
+    background-color: transparent;
+}
+
+.marker-icon .leaflet-marker-icon {
+    border-radius: 50%;
+    border: 2px solid;
+    width: 25px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.marker-icon.red .leaflet-marker-icon {
+    border-color: red;
+}
+
+.marker-icon.blue .leaflet-marker-icon {
+    border-color: blue;
+}
+
+.marker-icon.green .leaflet-marker-icon {
+    border-color: green;
+}
+
+.marker-icon.orange .leaflet-marker-icon {
+    border-color: orange;
+}
+
+.marker-icon.purple .leaflet-marker-icon {
+    border-color: purple;
+}
+
+.marker-icon.yellow .leaflet-marker-icon {
+    border-color: yellow;
+}
