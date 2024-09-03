@@ -25,6 +25,33 @@
          </div>
     </div>
     @push('scripts')
+    <script>
+        var dbmin = @json($dbmin);
+        var dba = @json($dba);
+        var dbmax = @json($dbmax);
+        var arccount = @json($arccount);
+
+        var time = @json($device->pluck('created_at'));
+
+        var timeArray = time.map(t => {
+            console.log('Original timestamp:', t); // Check the original timestamp
+            let date = new Date(t); 
+            console.log('Parsed Date object:', date); // Check the parsed Date object
+            
+            let hours = date.getHours();  
+            let minutes = date.getMinutes();  
+            
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        });
+
+        // console check
+        console.log(dbmin);
+        console.log(dba);
+        console.log(dbmax);
+        console.log(arccount);
+        console.log(timeArray);
+
+    </script>
     <script src="{{ asset('resources/js/external/monitoringpd.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     @endpush>

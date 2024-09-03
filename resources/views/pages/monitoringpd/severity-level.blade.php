@@ -11,7 +11,7 @@
                 {{ $device->status ?? 'N/A'}}
             </h5>
         </div>
-        <p class="py-3 my-1 font-normal text-sm text-gray-500 dark:text-gray-400">Last updated 2 hours ago  
+        <p class="py-3 my-1 font-normal text-sm text-gray-500 dark:text-gray-400">Last updated {{ $device->created_at->diffForHumans() }}
         </p>
     </div>
 </div>

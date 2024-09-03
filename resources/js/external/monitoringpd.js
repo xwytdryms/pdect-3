@@ -36,17 +36,17 @@ const options = {
   series: [
       {
           name: "DB Min",
-          data: [6500, 6400, 6300, 6600, 6200, 6400],
+          data: dbmin,
           color: "#1A56DB",
       },
       {
           name: "DBA",
-          data: [6600, 6500, 6400, 6700, 6300, 6450],
+          data: dba,
           color: "#7E3AF2",
       },
       {
           name: "DB Max",
-          data: [6700, 6600, 6500, 6800, 6400, 6500],
+          data: dbmax,
           color: "#BBE1FA",
       },
   ],
@@ -56,13 +56,14 @@ const options = {
   stroke: {
       curve: 'smooth'
   },
+
   xaxis: {
-      categories: ['13.00', '14.00', '15.00', '16.00', '17.00', '18.00', '19.00'],
+      categories: timeArray,
       labels: {
           show: true,
           style: {
               fontFamily: "Inter, sans-serif",
-              cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+              cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-300'
           }
       },
       axisBorder: {

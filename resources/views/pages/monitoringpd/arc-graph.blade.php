@@ -3,20 +3,20 @@
   <div class="flex justify-center pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
     <div class="flex items-center">
       <div>
-        <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">5.0</h5>
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Arc Frequency per week</p>
+        <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">{{ $arccounter }}</h5>
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Arc Frequency per day</p>
       </div>
     </div>
   </div>
 
   <div class="grid grid-cols-2">
     <dl class="flex items-center">
-        <dt class="text-gray-500 dark:text-gray-400 text-sm font-normal me-1">Highest Arc per Day :</dt>
-        <dd class="text-gray-900 text-sm dark:text-white font-semibold">{{ $arc }}</dd>
+        <dt class="text-gray-500 dark:text-gray-400 text-sm font-normal me-1">Highest Arc Value :</dt>
+        <dd class="text-gray-900 text-sm dark:text-white font-semibold">{{ $highestArc }}</dd>
     </dl>
     <dl class="flex items-center justify-end">
         <dt class="text-gray-500 dark:text-gray-400 text-sm font-normal me-1">Occured on :</dt>
-        <dd class="text-gray-900 text-sm dark:text-white font-semibold">Thursday</dd>
+        <dd class="text-gray-900 text-sm dark:text-white font-semibold">{{ $device->created_at->diffForHumans() }}</dd>
     </dl>
   </div>
 

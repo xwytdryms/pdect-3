@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\UplinkController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Device;
@@ -16,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/monitoringpd/{id}', [DashboardController::class, 'show'])
+Route::get('/monitoringpd/{id}', [MonitoringController::class, 'show'])
     ->middleware(['auth', 'verified'])->name('dashboard.show'); // Define the monitoringpd route
 
 

@@ -18,15 +18,5 @@ class DashboardController extends Controller
         return view('pages.dashboard.index', ['devices' => $devices, 'high' => $high, 'jumlah' => $jumlah]);	 
     }
 
-    public function show($device_id){
-        $device = Device::where('device_id', $device_id)->with('uplink')->first();
-        $arc = Uplink::where('device_id', $device_id)->latest()->value('arc');
-    // dd($arc);
-        if (!$device) {
-            return redirect()->route('dashboard.index')->with('error', 'Device not found');
-        }
-    
-        return view('pages.monitoringpd.index', ['device' => $device, 'arc' => $arc]);
-    }
     
 }

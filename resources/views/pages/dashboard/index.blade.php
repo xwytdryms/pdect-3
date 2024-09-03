@@ -1,9 +1,8 @@
 <x-app-layout>
     @push('css')
-    <link rel="stylesheet" href="{{ asset('css/leaflet-custom.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     @endpush
     
-
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
