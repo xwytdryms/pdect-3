@@ -39,12 +39,3 @@ if (devices && Array.isArray(devices)) {
     console.error('No device data available or data is not an array');
 }
 
-// // Handle map clicks
-// var popup = L.popup();
-// function onMapClick(e) {
-//     popup
-//         .setLatLng(e.latlng)
-//         .setContent("Tambahkan Lokasi?" + e.latlng.toString())
-//         .openOn(map);
-// }
-// map.on("click", onMapClick);

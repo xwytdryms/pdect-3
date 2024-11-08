@@ -28,8 +28,8 @@ const options = {
       show: true,
       strokeDashArray: 4,
       padding: {
-          left: 2,
-          right: 2,
+          left: 16,
+          right: 0,
           top: -26
       },
   },
@@ -88,109 +88,90 @@ if (document.getElementById("line-chart") && typeof ApexCharts !== 'undefined') 
 // Arc Chart
 
 const arcoptions = {
-    colors: ["#1A56DB", "#FDBA8C"],
-    series: [
+  colors: ["#1A56DB", "#FDBA8C"],
+  series: [
       {
-        name: "Organic",
-        color: "#1A56DB",
-        data: [
-          { x: "Mon", y: 231 },
-          { x: "Tue", y: 122 },
-          { x: "Wed", y: 63 },
-          { x: "Thu", y: 421 },
-          { x: "Fri", y: 122 },
-          { x: "Sat", y: 323 },
-          { x: "Sun", y: 111 },
-        ],
+          name: "Arc Counter",
+          color: "#FDBA8C",
+          data: arccount, // Use the arccount array directly for y-values
       },
-      {
-        name: "Social media",
-        color: "#FDBA8C",
-        data: [
-          { x: "Mon", y: 232 },
-          { x: "Tue", y: 113 },
-          { x: "Wed", y: 341 },
-          { x: "Thu", y: 224 },
-          { x: "Fri", y: 522 },
-          { x: "Sat", y: 411 },
-          { x: "Sun", y: 243 },
-        ],
-      },
-    ],
-    chart: {
+  ],
+  chart: {
       type: "bar",
       height: "320px",
       fontFamily: "Inter, sans-serif",
       toolbar: {
-        show: false,
+          show: false,
       },
-    },
-    plotOptions: {
+  },
+  plotOptions: {
       bar: {
-        horizontal: false,
-        columnWidth: "70%",
-        borderRadiusApplication: "end",
-        borderRadius: 8,
+          horizontal: false,
+          columnWidth: "70%",
+          borderRadiusApplication: "end",
+          borderRadius: 8,
       },
-    },
-    tooltip: {
+  },
+  tooltip: {
       shared: true,
       intersect: false,
       style: {
-        fontFamily: "Inter, sans-serif",
+          fontFamily: "Inter, sans-serif",
       },
-    },
-    states: {
+  },
+  states: {
       hover: {
-        filter: {
-          type: "darken",
-          value: 1,
-        },
+          filter: {
+              type: "darken",
+              value: 1,
+          },
       },
-    },
-    stroke: {
+  },
+  stroke: {
       show: true,
       width: 0,
       colors: ["transparent"],
-    },
-    grid: {
+  },
+  grid: {
       show: false,
       strokeDashArray: 4,
       padding: {
-        left: 2,
-        right: 2,
-        top: -14
+          left: 2,
+          right: 2,
+          top: -14,
       },
-    },
-    dataLabels: {
+  },
+  dataLabels: {
       enabled: false,
-    },
-    legend: {
+  },
+  legend: {
       show: false,
-    },
-    xaxis: {
+  },
+  xaxis: {
+      categories: timeArray, // Use dayArray for x-axis categories
       floating: false,
       labels: {
-        show: true,
-        style: {
-          fontFamily: "Inter, sans-serif",
-          cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-        }
+          show: true,
+          style: {
+              fontFamily: "Inter, sans-serif",
+              cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400',
+          },
       },
       axisBorder: {
-        show: false,
+          show: false,
       },
       axisTicks: {
-        show: false,
+          show: false,
       },
-    },
-    yaxis: {
+  },
+  yaxis: {
       show: false,
-    },
-    fill: {
+  },
+  fill: {
       opacity: 1,
-    },
-  }
+  },
+}
+
   
   if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
     const chart = new ApexCharts(document.getElementById("column-chart"), arcoptions);
