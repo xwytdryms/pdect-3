@@ -9,18 +9,21 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Device;
 use App\Models\Uplink;
 
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+// Dashboard route with sortable table
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
+// Monitoring route (unchanged)
 Route::get('/monitoringpd/{id}', [MonitoringController::class, 'show'])
-    ->middleware(['auth', 'verified'])->name('dashboard.show'); // Define the monitoringpd route
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard.show');
 
-
+// Device manager routes
 Route::controller(DeviceController::class)->group(function () {
     Route::get('/devicemanager', 'index')->middleware(['auth', 'verified'])->name('devicemanager');
     Route::post('/devicemanager', 'store')->middleware(['auth', 'verified'])->name('devicemanager.store');
@@ -28,7 +31,7 @@ Route::controller(DeviceController::class)->group(function () {
     Route::delete('/devicemanager/{device}', 'destroy')->middleware(['auth', 'verified'])->name('devicemanager.delete');
 });
 
-
+// Profile management routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -4,7 +4,7 @@
     <div class="flex items-center">
       <div>
         <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">{{ $arccounter }}</h5>
-        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Arc Frequency per day</p>
+        <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Total Arc Occurance</p>
       </div>
     </div>
   </div>
