@@ -33,8 +33,9 @@ class DashboardController extends Controller
         $devices = $devices->paginate(10)->withQueryString();
     
         // Count of devices with 'High' severity status
-        $high = Device::where('status', 'High')->count();
-    
+        $high = Uplink::where('arc', '>=', 1)->count();
+
+        
         // Total device count
         $jumlah = Device::count();
     
@@ -44,7 +45,8 @@ class DashboardController extends Controller
             'high' => $high,
             'jumlah' => $jumlah,
             'sort' => $sort,
-            'direction' => $direction
+            'direction' => $direction,
+    
         ]);
     }
     
