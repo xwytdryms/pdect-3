@@ -1,4 +1,4 @@
-
+{{-- 
 <div class="col-start-5 col-span-2 row-end-2 row-span-2 bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6" style="height: auto width:24rem">
   <div class="flex justify-center pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
     <div class="flex items-center">
@@ -65,4 +65,4 @@
         </a>
       </div>
     </div> --}}
-</div>
+</div> --}}

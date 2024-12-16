@@ -30,16 +30,19 @@ function addMarkers(devices) {
     });
 
     devices.forEach(device => {
+        const deviceUrl = deviceRoute.replace(':id', device.device_id);
         L.marker([device.latitude, device.longitude], { icon: customIcon })
             .addTo(map)
             .bindPopup(
                 `<div>
                     <strong>Device Id: ${device.device_id}</strong><br>
-                    <strong>PLN Area: ${device.name}</strong><br>
-                    <a href="/monitoringpd">See Details</a>
+                    <strong>Device Name: ${device.name}</strong><br>
+                    <a href="${deviceUrl}"> 
+                    See Details</a>
                 </div>`
             );
     });
+    
 }
 
 // Add markers on load
@@ -48,3 +51,11 @@ if (typeof devices !== 'undefined') {
 } else {
     console.error('No device data available');
 }
+setTimeout(() => {
+    map.invalidateSize();
+}, 100);
+
+window.addEventListener('resize', () => {
+    map.invalidateSize();
+});
+
