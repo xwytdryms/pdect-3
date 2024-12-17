@@ -10,27 +10,28 @@
     </div>
 @endif
   {{-- Table --}}
-  <section class="bg-gray-50 dark:bg-gray-900 h-screen flex p-6">
+  <section class="bg-gray-50 dark:bg-gray-900 h-full flex p-6">
       {{-- Table Header --}}
-      <div class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
+      <div class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full ">
           <!-- Start coding here -->
-          <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
-              <div
-                  class="flex flex-row items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+          <div class="relative bg-white shadow-md dark:bg-gray-800 rounded-lg ">
+              <div class="flex flex-row items-center justify-center lg:justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                   <div class="">
-                      <a href="{{ route('dashboard') }}"
-                          class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                              class="size-4 text-white me-2" aria-hidden="true">
-                              <path fill-rule="evenodd"
-                                  d="M9.53 2.47a.75.75 0 0 1 0 1.06L4.81 8.25H15a6.75 6.75 0 0 1 0 13.5h-3a.75.75 0 0 1 0-1.5h3a5.25 5.25 0 1 0 0-10.5H4.81l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 0Z"
-                                  clip-rule="evenodd" />
-                          </svg>
-                          Back to Dashboard
-                      </a>
+                    <a href="{{ route('dashboard') }}"
+                    class="hidden lg:flex items-center space-x-2 px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                    <!-- Ikon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-5 h-5 text-white" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M9.53 2.47a.75.75 0 0 1 0 1.06L4.81 8.25H15a6.75 6.75 0 0 1 0 13.5h-3a.75.75 0 0 1 0-1.5h3a5.25 5.25 0 1 0 0-10.5H4.81l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 0Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <!-- Teks -->
+                    <span>Back to Dashboard</span>
+                </a>
+                
                   </div>
-                  <div
-                      class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                  <div class="flex flex-col  justify-end flex-shrink-0 w-auto space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
                       <button id="addDevice" type="button" data-modal-target="addDeviceModal"
                           data-modal-toggle="addDeviceModal"
                           class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
