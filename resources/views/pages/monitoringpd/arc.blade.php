@@ -3,12 +3,20 @@
         <h5 class="mb-2 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Arc Counter</h5>
         <div class="flex justify-center items-center">
             <h5 class="text-lg sm:text-2xl md:text-3xl font-semibold
-            @if ($arc == 0) text-white
-            @elseif ($arc > 0) text-red-600
+            @if ($arccounter == 0) text-white
+            @elseif ($arccounter > 0) text-red-600
             @endif">
-                {{ $arc ?? 'N/A'}}
+                {{ $arccounter ?? 'N/A' }}
             </h5>
         </div>
-        <p class="py-3 text-sm text-gray-500 dark:text-gray-400">Last updated {{ $device->created_at->diffForHumans() }}</p>
+        <p class="py-3 text-sm text-gray-500 dark:text-gray-400">Last updated {{ $time->diffForHumans() }}</p>
+        <form action="{{ route('reset.arccounter') }}" method="POST" class="mt-4">
+            @csrf
+            <input type="hidden" name="device_id" value="{{ $device->device_id }}">
+            <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                Reset Counter
+            </button>
+        </form>
+        
     </div>
 </div>

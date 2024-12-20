@@ -28,8 +28,7 @@
                     </svg>
                     <!-- Teks -->
                     <span>Back to Dashboard</span>
-                </a>
-                
+                </a>                
                   </div>
                   <div class="flex flex-col  justify-end flex-shrink-0 w-auto space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
                       <button id="addDevice" type="button" data-modal-target="addDeviceModal"

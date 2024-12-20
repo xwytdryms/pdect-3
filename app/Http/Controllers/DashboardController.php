@@ -10,11 +10,9 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        // Get the sort direction (asc or desc) and the column to sort by from the request
-        $sort = $request->get('sort', 'status'); // Default to sorting by 'status'
+        $sort = $request->get('sort', 'status'); // Default sorting by 'status'
         $direction = $request->get('direction', 'asc'); // Default direction is ascending
     
-        // Custom sorting using CASE for SQLite
         if ($sort == 'status') {
             $devices = Device::orderByRaw("
                 CASE status
@@ -25,32 +23,35 @@ class DashboardController extends Controller
                 END {$direction}
             ");
         } else {
-            // Default sorting by ID (or other fields)
             $devices = Device::orderBy($sort, $direction);
         }
     
-        // Paginate the results (10 devices per page)
         $devices = $devices->paginate(10)->withQueryString();
     
-        // Count of devices with 'High' severity status
-        $high = Uplink::where('arc', '>=', 1)->count();
-
-        
-        // Total device count
-        $jumlah = Device::count();
+        // Add custom property for row number
+        $currentPage = $devices->currentPage();
+        $perPage = $devices->perPage();
+        foreach ($devices as $index => $device) {
+            $device->row_number = ($currentPage - 1) * $perPage + $index + 1;
+        }
     
-        // Return the view with the sorted and paginated devices and other data
+        $high = Uplink::where('arc', '>=', 1)
+            ->whereHas('device') // Ensure the associated device exists
+            ->count();
+    
+        $jumlah = Device::count();
+
+        // $critical = Uplink::where('device_id', $device_id)->where('arc', '>=',1)->count();
+    
         return view('pages.dashboard.index', [
             'devices' => $devices,
             'high' => $high,
             'jumlah' => $jumlah,
             'sort' => $sort,
             'direction' => $direction,
-    
+            // 'critical' => $critical
+
         ]);
     }
-    
-
-    
     
 }

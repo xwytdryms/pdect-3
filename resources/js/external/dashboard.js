@@ -1,5 +1,5 @@
 // Initialize the map
-var map = L.map("map").setView([-7.797068, 110.370529], 12);
+var map = L.map("map").setView([-7.797068, 110.370529], 10);
 
 // Tile layer
 var mainLayer = L.tileLayer(

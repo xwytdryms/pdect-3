@@ -1,4 +1,4 @@
-<div class="row-start-1 col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg h-40 w-full" id="widget">
+<div class="row-start-1 col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg w-full" id="widget">
     <div class="flex items-center justify-between px-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pt-2">
             Device Name : {{ $device->name ?? 'Device Name' }}

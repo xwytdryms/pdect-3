@@ -22,6 +22,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 Route::get('/monitoringpd/{id}', [MonitoringController::class, 'show'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard.show');
+Route::post('/monitoringpd', [MonitoringController::class, 'resetArcCounter'])
+    ->middleware(['auth', 'verified'])
+    ->name('reset.arccounter');
+
+
 
 // Device manager routes
 Route::controller(DeviceController::class)->group(function () {

@@ -4,7 +4,9 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        <a href="{{ route('dashboard', ['sort' => 'id', 'direction' => $direction === 'asc' ? 'desc' : 'asc']) }}">#</a>
+                        <a href="{{ route('dashboard') }}?sort=status&direction={{ $direction == 'asc' ? 'desc' : 'asc' }}">
+                            No
+                        </a>
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <a href="{{ route('dashboard', ['sort' => 'name', 'direction' => $direction === 'asc' ? 'desc' : 'asc']) }}">Device Name</a>
@@ -23,11 +25,17 @@
             </thead>
             <tbody>
                 @foreach ($devices as $device)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600
+                {{-- @if ($critical === 0)
+                    
+                @else
+                    bg-red-700
+                @endif --}}
+                ">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $device->id }}
+                        {{ $device->row_number }}
                     </th>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 bg">
                         <a href="{{ route('dashboard.show', $device->device_id) }}" class="hover:underline">{{ $device->name ?? $device->device_id }}</a>
                     </td>
                     <td class="px-6 py-4">

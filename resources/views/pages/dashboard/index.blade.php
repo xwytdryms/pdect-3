@@ -10,20 +10,20 @@
     </x-slot>
 
     <div class="flex justify-center m-0 py-12">
-        <div class="grid auto-rows-auto grid-cols-1 lg:grid-cols-5 gap-2 max-w-7xl sm:px-6 lg:px-8 text-center text-gray-900 dark:text-gray-100">
+        <div class="flex grid auto-rows-auto grid-cols-1 lg:grid-cols-5 gap-2 max-w-7xl sm:px-6 lg:px-8 text-center text-gray-900 dark:text-gray-100">
             <!-- Map Section -->
             <div class="col-span-1 lg:col-span-3 lg:row-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 @include('pages.dashboard.map')
             </div>
 
             <!-- Widgets Section -->
-            <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-2 overflow-hidden shadow-sm sm:rounded-lg lg:max-h-48">
                 @include('pages.dashboard.widget-1')
                 @include('pages.dashboard.widget-2')
             </div>
 
             <!-- Severity Section -->
-            <div class="col-span-1 lg:col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="col-span-1 lg:col-span-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg lg:min-h-72">
                 @include('pages.dashboard.severity')
             </div>
 
